@@ -1,0 +1,12 @@
+D:\Projects\Webmilez\Webmilez Projects\Ecommerce Admin\DataLayer\bin\Debug\DataLayer.dll.config
+D:\Projects\Webmilez\Webmilez Projects\Ecommerce Admin\DataLayer\bin\Debug\DataLayer.dll
+D:\Projects\Webmilez\Webmilez Projects\Ecommerce Admin\DataLayer\bin\Debug\DataLayer.pdb
+D:\Projects\Webmilez\Webmilez Projects\Ecommerce Admin\DataLayer\bin\Debug\CommonComponent.dll
+D:\Projects\Webmilez\Webmilez Projects\Ecommerce Admin\DataLayer\bin\Debug\EntityFramework.dll
+D:\Projects\Webmilez\Webmilez Projects\Ecommerce Admin\DataLayer\bin\Debug\EntityFramework.SqlServer.dll
+D:\Projects\Webmilez\Webmilez Projects\Ecommerce Admin\DataLayer\bin\Debug\CommonComponent.pdb
+D:\Projects\Webmilez\Webmilez Projects\Ecommerce Admin\DataLayer\bin\Debug\EntityFramework.xml
+D:\Projects\Webmilez\Webmilez Projects\Ecommerce Admin\DataLayer\bin\Debug\EntityFramework.SqlServer.xml
+D:\Projects\Webmilez\Webmilez Projects\Ecommerce Admin\DataLayer\obj\Debug\DataLayer.csprojResolveAssemblyReference.cache
+D:\Projects\Webmilez\Webmilez Projects\Ecommerce Admin\DataLayer\obj\Debug\DataLayer.dll
+D:\Projects\Webmilez\Webmilez Projects\Ecommerce Admin\DataLayer\obj\Debug\DataLayer.pdb

@@ -1,0 +1,14 @@
+D:\Projects\Webmilez\Webmilez Projects\Ecommerce Admin\CommonComponent\bin\Debug\CommonComponent.dll
+D:\Projects\Webmilez\Webmilez Projects\Ecommerce Admin\CommonComponent\bin\Debug\CommonComponent.pdb
+D:\Projects\Webmilez\Webmilez Projects\Ecommerce Admin\CommonComponent\bin\Debug\Microsoft.AspNet.Scaffolding.EntityFramework.12.0.dll
+D:\Projects\Webmilez\Webmilez Projects\Ecommerce Admin\CommonComponent\bin\Debug\Microsoft.AspNet.Scaffolding.12.0.dll
+D:\Projects\Webmilez\Webmilez Projects\Ecommerce Admin\CommonComponent\bin\Debug\EnvDTE.dll
+D:\Projects\Webmilez\Webmilez Projects\Ecommerce Admin\CommonComponent\bin\Debug\EnvDTE80.dll
+D:\Projects\Webmilez\Webmilez Projects\Ecommerce Admin\CommonComponent\bin\Debug\stdole.dll
+D:\Projects\Webmilez\Webmilez Projects\Ecommerce Admin\CommonComponent\bin\Debug\Microsoft.AspNet.Scaffolding.EntityFramework.12.0.xml
+D:\Projects\Webmilez\Webmilez Projects\Ecommerce Admin\CommonComponent\bin\Debug\Microsoft.AspNet.Scaffolding.12.0.xml
+D:\Projects\Webmilez\Webmilez Projects\Ecommerce Admin\CommonComponent\bin\Debug\EnvDTE.xml
+D:\Projects\Webmilez\Webmilez Projects\Ecommerce Admin\CommonComponent\bin\Debug\EnvDTE80.xml
+D:\Projects\Webmilez\Webmilez Projects\Ecommerce Admin\CommonComponent\obj\Debug\CommonComponent.dll
+D:\Projects\Webmilez\Webmilez Projects\Ecommerce Admin\CommonComponent\obj\Debug\CommonComponent.pdb
+D:\Projects\Webmilez\Webmilez Projects\Ecommerce Admin\CommonComponent\obj\Debug\CommonComponent.csprojResolveAssemblyReference.cache

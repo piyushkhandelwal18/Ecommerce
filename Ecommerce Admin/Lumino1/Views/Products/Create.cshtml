@@ -1,0 +1,633 @@
+﻿@model CommonComponent.Models.Product
+
+@{
+    ViewBag.Title = "Create";
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="row">
+        <div class="col-md-12">
+            <h3>Add new Product</h3>
+
+        </div>
+        @* <div class="col-md-6 " style="margin-top : 25px; color:blue; margin-left:-50px">
+            @Html.ActionLink("Back to category list", "Index")
+            </div>*@
+
+        <div class="clearfix"></div>
+        <br />
+
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="nav nav-tabs-custom" style="background-color:white; border-left:solid 1px; border-bottom:solid 1px; border-color:#ddd; ">
+
+                <ul class="nav nav-tabs" style="border-bottom:solid 1px; border-color:#ddd; background-color:white;">
+                    <li class="active" style="border-top:solid 1px; border-right:solid 1px; border-color:#ddd;">
+                        <a data-toggle="tab" href="#Product_Info">Product Info</a>
+                    </li>
+                    <li class="" style="">
+                        <a data-toggle="tab" href="#Seo">SEO</a>
+                    </li>
+                    <li class="" style="">
+                        <a data-toggle="tab" href="#Image">Images</a>
+                    </li>
+
+
+                </ul>
+                @using (Html.BeginForm("Create", "Products", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+
+                    <div class="tab-content" style="border-right:solid 1px; border-color:#ddd">
+                        <div id="Product_Info" class="tab-pane fade active in">
+                            <div class="col-md-7">
+                                <div class="panel-group">
+
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading" style="border:solid 1px; border-color:#ddd; background-color:#ddd;">
+                                            General information
+                                        </div>
+                                        <div class="panel-body" style="border:solid 1px; border-color:#ddd">
+
+
+                                            <div class="from-group">
+                                                <div class="col-md-4">
+                                                    <label class="label-wrapper pull-right ">
+                                                        @Html.LabelFor(model => model.VisibleIndividually, htmlAttributes: new { @class = "control-label" })
+                                                        <i class="glyphicon glyphicon-question-sign color-blue" title="Visible Individually"></i>
+                                                    </label>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    @Html.EditorFor(model => model.ProductName, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.ProductName, "", new { @class = "text-danger" })
+                                                </div>
+
+                                            </div>
+                                            <div class="clearfix"></div>
+                                            <br />
+
+                                            <div class="form-group">
+                                                <div class="col-md-4">
+                                                    <label class="pull-right">
+                                                        @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label" })
+                                                        <i class="glyphicon glyphicon-question-sign color-blue" title="Description"></i>
+                                                    </label>
+                                                </div>
+
+                                                <div class="col-md-8">
+                                                    @Html.TextAreaFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+
+                                                    @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                                                </div>
+
+                                            </div>
+                                            <div class="clearfix"></div>
+                                            <br />
+
+
+                                            <div class="form-group">
+                                                <div class="col-md-4">
+                                                    <label class="pull-right">
+                                                        @* @Html.EnumDropDownListFor(model =>model.Published)*@
+                                                        @Html.LabelFor(model => model.PublishedProduct, htmlAttributes: new { @class = "control-label" })
+                                                        <i class="glyphicon glyphicon-question-sign color-blue" title="Published Product"></i>
+                                                    </label>
+                                                </div>
+
+                                                <div class="col-md-8 ">
+                                                    @Html.CheckBoxFor(model => model.PublishedProduct, new { htmlAttributes = new { @class = "form-control pull-left" } })
+
+                                                    @*@Html.EditorFor(model => model.Published, new { htmlAttributes = new { @class = "form-control pull-left" } })*@
+                                                    @Html.ValidationMessageFor(model => model.PublishedProduct, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                            <br />
+
+                                            <div class="form-group">
+                                                <div class="col-md-4">
+                                                    <label class="pull-right">
+                                                        @* @Html.EnumDropDownListFor(model =>model.Published)*@
+                                                        @Html.LabelFor(model => model.ShowHome, htmlAttributes: new { @class = "control-label" })
+                                                        <i class="glyphicon glyphicon-question-sign color-blue" title="Show on Home Page"></i>
+                                                    </label>
+                                                </div>
+                                                <div class="col-md-8 ">
+                                                    @Html.CheckBoxFor(model => model.ShowHome, new { htmlAttributes = new { @class = "form-control pull-left" } })
+                                                    @Html.ValidationMessageFor(model => model.ShowHome, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="panel-group">
+
+                                    <div class="panel panel-default" id="group-giftcard">
+                                        <div class="panel-heading" style="border:solid 1px; border-color:#ddd; background-color:#ddd;">
+                                            <h4>Gift Card</h4>
+                                        </div>
+
+                                        <div class="panel-body" style="border:solid 1px; border-color:#ddd">
+
+                                            <div class="form-group">
+                                                <div class="col-md-4">
+                                                    <label class="pull-right">
+                                                        @Html.LabelFor(model => model.GiftCard, htmlAttributes: new { @class = "control-label" })
+                                                        <i class="glyphicon glyphicon-question-sign color-blue" title="Is Gift Card"></i>
+                                                    </label>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    @Html.CheckBoxFor(model => model.GiftCard, new { htmlAttributes = new { @class = "form-control pull-left" } })
+                                                    @Html.ValidationMessageFor(model => model.GiftCard, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                            <br />
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="panel-group">
+
+                                    <div class="panel panel-default" id="group-downloads">
+                                        <div class="panel-heading" style="border:solid 1px; border-color:#ddd; background-color:#ddd">
+                                            Downloadable product
+                                        </div>
+
+                                        <div class="panel-body" style="border:solid 1px; border-color:#ddd">
+
+                                            <div class="form-group">
+                                                <div class="col-md-4">
+                                                    <label class="pull-right">
+                                                        @Html.LabelFor(model => model.Downloadable, htmlAttributes: new { @class = "control-label" })
+                                                        <i class="glyphicon glyphicon-question-sign color-blue" title="Downloadable Product"></i>
+                                                    </label>
+                                                </div>
+                                                <div class="col-md-8 ">
+                                                    @Html.CheckBoxFor(model => model.Downloadable, new { htmlAttributes = new { @class = "form-control pull-left" } })
+                                                    @Html.ValidationMessageFor(model => model.Downloadable, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                            <br />
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="panel-group">
+                                    <div class="panel panel-default" id="group-downloads">
+                                        <div class="panel-heading" style="border:solid 1px; border-color:#ddd; background-color:#ddd">
+                                            Recurring product
+                                        </div>
+
+                                        <div class="panel-body" style="border:solid 1px; border-color:#ddd">
+
+
+                                            <div class="form-group">
+                                                <div class="col-md-4">
+                                                    <label class="pull-right">
+                                                        @Html.LabelFor(model => model.RecurringProduct, htmlAttributes: new { @class = "control-label" })
+                                                        <i class="glyphicon glyphicon-question-sign color-blue" title="Downloadable Product"></i>
+                                                    </label>
+                                                </div>
+                                                <div class="col-md-8 ">
+                                                    @Html.CheckBoxFor(model => model.RecurringProduct, new { htmlAttributes = new { @class = "form-control pull-left" } })
+                                                    @Html.ValidationMessageFor(model => model.RecurringProduct, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                            <br />
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel-group">
+                                    <div class="panel panel-default" id="group-downloads">
+                                        <div class="panel-heading" style="border:solid 1px; border-color:#ddd; background-color:#ddd">
+                                            Prices
+                                        </div>
+
+                                        <div class="panel-body" style="border:solid 1px; border-color:#ddd">
+
+
+                                            <div class="form-group">
+                                                <div class="col-md-4">
+                                                    <label class="pull-right">
+                                                        @Html.LabelFor(model => model.ProductPrize, htmlAttributes: new { @class = "control-label" })
+                                                        <i class="glyphicon glyphicon-question-sign color-blue" title="Downloadable Product"></i>
+                                                    </label>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    @Html.EditorFor(model => model.ProductPrize, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.ProductPrize, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                            <br />
+
+                                            <div class="form-group">
+                                                <div class="col-md-4">
+                                                    <label class="pull-right">
+                                                        @Html.LabelFor(model => model.Discount, htmlAttributes: new { @class = "control-label" })
+                                                        <i class="glyphicon glyphicon-question-sign color-blue" title="Downloadable Product"></i>
+                                                    </label>
+                                                </div>
+                                                <div class="col-md-8 ">
+                                                    @Html.EditorFor(model => model.Discount, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.Discount, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                            <br />
+
+                                            <div class="form-group">
+                                                <div class="col-md-4">
+                                                    <label class="pull-right">
+                                                        @Html.LabelFor(model => model.Broadcast, htmlAttributes: new { @class = "control-label" })
+                                                        <i class="glyphicon glyphicon-question-sign color-blue" title="Downloadable Product"></i>
+                                                    </label>
+                                                </div>
+                                                <div class="col-md-8 ">
+                                                    @Html.CheckBoxFor(model => model.Broadcast, new { htmlAttributes = new { @class = "form-control pull-left" } })
+                                                    @Html.ValidationMessageFor(model => model.Broadcast, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                            <br />
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="panel-group">
+                                    <div class="panel panel-default" id="group-downloads">
+                                        <div class="panel-heading" style="border:solid 1px; border-color:#ddd; background-color:#ddd">
+                                            Inventary
+                                        </div>
+
+                                        <div class="panel-body" style="border:solid 1px; border-color:#ddd">
+                                            <div class="form-group">
+                                                <div class="col-md-5">
+                                                    <label class="pull-right">
+                                                        @Html.LabelFor(model => model.InventaryMethod, htmlAttributes: new { @class = "control-label" })
+                                                        <i class="glyphicon glyphicon-question-sign color-blue" title="Select the inventary method"></i>
+                                                    </label>
+                                                </div>
+                                                <div class="col-md-7 ">
+                                                    @Html.EditorFor(model => model.InventaryMethod, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.RecurringProduct, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                            <br />
+
+                                            <div class="form-group">
+                                                <div class="col-md-5">
+                                                    <label class="pull-right">
+                                                        @Html.LabelFor(model => model.Quantity, htmlAttributes: new { @class = "control-label" })
+                                                        <i class="glyphicon glyphicon-question-sign color-blue" title="Enter a comma seperated list of quantities."></i>
+                                                    </label>
+                                                </div>
+                                                <div class="col-md-7 ">
+                                                    @Html.EditorFor(model => model.Quantity, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.Quantity, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                            <br />
+
+                                            <div class="form-group">
+                                                <div class="col-md-5">
+                                                    <label class="pull-right">
+                                                        @Html.LabelFor(model => model.NotReturnable, htmlAttributes: new { @class = "control-label" })
+                                                        <i class="glyphicon glyphicon-question-sign color-blue" title="Check if the product is not returnable"></i>
+                                                    </label>
+                                                </div>
+                                                <div class="col-md-7 ">
+                                                    @Html.CheckBoxFor(model => model.NotReturnable, new { htmlAttributes = new { @class = "form-control pull-left" } })
+                                                    @Html.ValidationMessageFor(model => model.NotReturnable, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                            <br />
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+                                <div class="panel-group">
+                                    <div class="panel panel-default" id="group-downloads">
+                                        <div class="panel-heading" style="border:solid 1px; border-color:#ddd; background-color:#ddd">
+                                            Shipping
+                                        </div>
+
+                                        <div class="panel-body" style="border:solid 1px; border-color:#ddd">
+                                            <div class="form-group">
+                                                <div class="col-md-5">
+                                                    <label class="pull-right">
+                                                        @Html.LabelFor(model => model.Shipping, htmlAttributes: new { @class = "control-label" })
+                                                        <i class="glyphicon glyphicon-question-sign color-blue" title="Check if the Product can be shipped"></i>
+                                                    </label>
+                                                </div>
+                                                <div class="col-md-7 ">
+                                                    @Html.CheckBoxFor(model => model.Shipping, new { htmlAttributes = new { @class = "form-control pull-left" } })
+                                                    @Html.ValidationMessageFor(model => model.Shipping, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                            <br />
+
+                                            <div class="form-group">
+                                                <div class="col-md-5">
+                                                    <label class="pull-right">
+                                                        @Html.LabelFor(model => model.Weight, htmlAttributes: new { @class = "control-label" })
+                                                        <i class="glyphicon glyphicon-question-sign color-blue" title="The Product Weight"></i>
+                                                    </label>
+                                                </div>
+                                                <div class="col-md-7 ">
+                                                    @Html.EditorFor(model => model.Weight, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.Weight, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                            <br />
+
+                                            <div class="form-group">
+                                                <div class="col-md-5">
+                                                    <label class="pull-right">
+                                                        @Html.LabelFor(model => model.Length, htmlAttributes: new { @class = "control-label" })
+                                                        <i class="glyphicon glyphicon-question-sign color-blue" title="The Product Length"></i>
+                                                    </label>
+                                                </div>
+                                                <div class="col-md-7 ">
+                                                    @Html.EditorFor(model => model.Length, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.Length, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                            <br />
+
+                                            <div class="form-group">
+                                                <div class="col-md-5">
+                                                    <label class="pull-right">
+                                                        @Html.LabelFor(model => model.Width, htmlAttributes: new { @class = "control-label" })
+                                                        <i class="glyphicon glyphicon-question-sign color-blue" title="The Product Width"></i>
+                                                    </label>
+                                                </div>
+                                                <div class="col-md-7 ">
+                                                    @Html.EditorFor(model => model.Width, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.Width, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                            <br />
+
+                                            <div class="form-group">
+                                                <div class="col-md-5">
+                                                    <label class="pull-right">
+                                                        @Html.LabelFor(model => model.Height, htmlAttributes: new { @class = "control-label" })
+                                                        <i class="glyphicon glyphicon-question-sign color-blue" title="The Product Height"></i>
+                                                    </label>
+                                                </div>
+                                                <div class="col-md-7 ">
+                                                    @Html.EditorFor(model => model.Height, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.Height, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                            <br />
+
+                                            <div class="form-group">
+                                                <div class="col-md-5">
+                                                    <label class="pull-right">
+                                                        @Html.LabelFor(model => model.FreeShipping, htmlAttributes: new { @class = "control-label" })
+                                                        <i class="glyphicon glyphicon-question-sign color-blue" title="Check if this product come with free shipping"></i>
+                                                    </label>
+                                                </div>
+                                                <div class="col-md-7 ">
+                                                    @Html.CheckBoxFor(model => model.FreeShipping, new { htmlAttributes = new { @class = "form-control pull-left" } })
+                                                    @Html.ValidationMessageFor(model => model.FreeShipping, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                            <br />
+
+                                            <div class="form-group">
+                                                <div class="col-md-5">
+                                                    <label class="pull-right">
+                                                        @Html.LabelFor(model => model.ShippingCharge, htmlAttributes: new { @class = "control-label" })
+                                                        <i class="glyphicon glyphicon-question-sign color-blue" title="Additional Shipping charge"></i>
+                                                    </label>
+                                                </div>
+                                                <div class="col-md-7 ">
+                                                    @Html.EditorFor(model => model.ShippingCharge, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.ShippingCharge, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+                                <div class="panel-group">
+                                    <div class="panel panel-default" id="group-downloads">
+                                        <div class="panel-heading" style="border:solid 1px; border-color:#ddd; background-color:#ddd">
+                                            Mappings
+                                        </div>
+
+                                        <div class="panel-body" style="border:solid 1px; border-color:#ddd">
+                                            <div class="form-group">
+                                                <div class="col-md-5">
+                                                    <label class="pull-right">
+                                                        @Html.LabelFor(model => model.Category, htmlAttributes: new { @class = "control-label" })
+                                                        <i class="glyphicon glyphicon-question-sign color-blue" title="Choose Category"></i>
+                                                    </label>
+                                                </div>
+                                                <div class="col-md-7 ">
+                                                    @Html.EditorFor(model => model.Category, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.Category, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                            <br />
+
+                                            <div class="form-group">
+                                                <div class="col-md-5">
+                                                    <label class="pull-right">
+                                                        @Html.LabelFor(model => model.Manufacturers, htmlAttributes: new { @class = "control-label" })
+                                                        <i class="glyphicon glyphicon-question-sign color-blue" title="Choose Manufacturees"></i>
+                                                    </label>
+                                                </div>
+                                                <div class="col-md-7 ">
+                                                    @Html.EditorFor(model => model.Manufacturers, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.Manufacturers, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                            <br />
+
+                                            <div class="form-group">
+                                                <div class="col-md-5">
+                                                    <label class="pull-right">
+                                                        @Html.LabelFor(model => model.LimitedStore, htmlAttributes: new { @class = "control-label" })
+                                                        <i class="glyphicon glyphicon-question-sign color-blue" title="Option to limit this product to certain store"></i>
+                                                    </label>
+                                                </div>
+                                                <div class="col-md-7 ">
+                                                    @Html.EditorFor(model => model.LimitedStore, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.LimitedStore, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+                                <div class="panel-group">
+                                    <div class="panel panel-default" id="group-downloads">
+                                        <div class="panel-heading" style="border:solid 1px; border-color:#ddd; background-color:#ddd">
+                                            Access control list
+                                        </div>
+
+                                        <div class="panel-body" style="border:solid 1px; border-color:#ddd">
+                                            <div class="form-group">
+                                                <div class="col-md-5">
+                                                    <label class="pull-right">
+                                                        @Html.LabelFor(model => model.CustomerRole, htmlAttributes: new { @class = "control-label" })
+                                                        <i class="glyphicon glyphicon-question-sign color-blue" title="Choose one or several customer role"></i>
+                                                    </label>
+                                                </div>
+                                                <div class="col-md-7 ">
+                                                    @Html.EditorFor(model => model.CustomerRole, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.CustomerRole, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="panel-group">
+                                    <div class="panel panel-default" id="group-downloads">
+                                        <div class="panel-heading" style="border:solid 1px; border-color:#ddd; background-color:#ddd">
+                                            Require other product
+                                        </div>
+
+                                        <div class="panel-body" style="border:solid 1px; border-color:#ddd">
+                                            <div class="form-group">
+                                                <div class="col-md-5">
+                                                    <label class="pull-right">
+                                                        @Html.LabelFor(model => model.RequireOtherProduct, htmlAttributes: new { @class = "control-label" })
+                                                        <i class="glyphicon glyphicon-question-sign color-blue" title="Choose one or several customer role"></i>
+                                                    </label>
+                                                </div>
+                                                <div class="col-md-7 ">
+                                                    @Html.CheckBoxFor(model => model.RequireOtherProduct, new { htmlAttributes = new { @class = "form-control pull-left" } })
+                                                    @Html.ValidationMessageFor(model => model.RequireOtherProduct, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="clearfix"></div>
+                            <br />
+
+
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" value="Create" class="btn btn-default" />
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div id="Seo" class="tab-pane fade">
+                            <div class="panel-group">
+                                <div class="panel panel-default">
+                                    <div class="panel-body" style="border:solid 1px; border-color:#ddd">
+
+                                        <div class="from-group">
+                                            <div class="col-md-3">
+                                                @Html.LabelFor(model => model.Height, htmlAttributes: new { @class = "control-label" })
+                                                <i class="glyphicon glyphicon-question-sign color-blue" title="Category Image"></i>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <input name="Image" type="file" />
+                                                @Html.ValidationMessageFor(model => model.Height)
+                                            </div>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                        <br />
+                                        <div class="form-group">
+                                            <div class="col-md-offset-2 col-md-10">
+                                                <input type="submit" value="Upload" class="btn btn-default" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="Image" class="tab-pane fade">
+                            <div class="panel-group">
+                                <div class="panel panel-default">
+                                    <div class="panel-body" style="border:solid 1px; border-color:#ddd">
+
+                                        <div class="from-group">
+                                            <div class="col-md-3">
+                                                @Html.LabelFor(model => model.ProductImage, htmlAttributes: new { @class = "control-label" })
+                                                <i class="glyphicon glyphicon-question-sign color-blue" title="Product Image"></i>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <input name="Image" type="file" />
+                                                @Html.ValidationMessageFor(model => model.Height)
+                                            </div>
+                                        </div>
+                                        @* <div class="row">
+                                                    <div class="col-md-4 col-md-8">
+                                                        <div class="form-group">
+                                                            <div class="col-md-offset-2 col-md-10">
+                                                                <input type="submit" value="Upload" class="btn btn-default" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                            </div>
+                                        *@
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+
+    
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

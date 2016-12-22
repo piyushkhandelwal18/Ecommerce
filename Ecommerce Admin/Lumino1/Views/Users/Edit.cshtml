@@ -1,0 +1,235 @@
+﻿@model CommonComponent.Models.User
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="row">
+        <div class="col-md-11">
+            <h3>Edit new User</h3>
+
+        </div>
+
+        <div class="col-md-1 pull-right" style="margin-top : 20px">
+
+            @Html.ActionLink("Save", "Edit", null, new { @class = "btn btn-success" })
+
+
+        </div>
+        <div class="clearfix"></div>
+        <br />
+
+    </div>
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.UserId)
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="nav nav-tabs-custom" style="background-color:white; border-left:solid 1px; border-bottom:solid 1px; border-color:#ddd; ">
+
+                <ul class="nav nav-tabs" style="border-bottom:solid 1px; border-color:#ddd; background-color:white;">
+                    <li class="active" style="border-top:solid 1px; border-right:solid 1px; border-color:#ddd;">
+                        <a data-toggle="tab" href="#User_Info">User Info</a>
+                    </li>
+                </ul>
+                @using (Html.BeginForm("Edit", "Users", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    <div class="tab-content" style="border-right:solid 1px; border-color:#ddd">
+                        <div id="User_Info" class="tab-pane fade active in">
+                            <div class="panel-group">
+                                <div class="panel panel-default">
+                                    <div class="panel-body" style="border:solid 1px; border-color:#ddd">
+
+
+                                        <div class="from-group">
+                                            <div class="col-md-3">
+                                                <label class="label-wrapper ">
+                                                    @Html.LabelFor(model => model.UserEmailId, htmlAttributes: new { @class = "control-label" })
+                                                    <i class="glyphicon glyphicon-question-sign color-blue" title="Category Name"></i>
+                                                </label>
+
+
+                                            </div>
+
+                                            @*  @Html.LabelFor(model => model.CategoryName, htmlAttributes: new { @class = "control-label col-md-3 text-right" })*@
+                                            <div class="col-md-8">
+                                                @Html.EditorFor(model => model.UserEmailId, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.UserEmailId, "", new { @class = "text-danger" })
+                                            </div>
+
+                                        </div>
+                                        <div class="clearfix"></div>
+                                        <br />
+                                        <div class="form-group">
+                                            <div class="col-md-3">
+                                                @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label" })
+                                                <i class="glyphicon glyphicon-question-sign color-blue" title="Description"></i>
+                                            </div>
+
+                                            <div class="col-md-9">
+                                                @Html.PasswordFor(model => model.Password, new {  @class = "form-control", value = Model.Password  })
+                                                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                                            </div>
+
+                                        </div>
+                                        <div class="clearfix"></div>
+                                        <br />
+
+                                        <div class="form-group">
+                                            <div class="col-md-3">
+                                                @Html.LabelFor(model => model.Gender, htmlAttributes: new { @class = "control-label" })
+
+                                                <i class="glyphicon glyphicon-question-sign color-blue" title="Order Details"></i>
+                                            </div>
+                                            <div class="col-md-9">
+                                                @Html.RadioButtonFor(model => model.Gender,"Male" ,new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.Label("Male")
+                                                @Html.RadioButtonFor(model => model.Gender, "Female",new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.Label("Female")
+                                                @*@Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })*@
+                                                @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
+                                            </div>
+
+                                        </div>
+                                        <div class="clearfix"></div>
+                                        <br />
+                                        <div class="form-group">
+                                            <div class="col-md-3">
+                                                @Html.LabelFor(model => model.UserFirstName, htmlAttributes: new { @class = "control-label" })
+                                                <i class="glyphicon glyphicon-question-sign color-blue" title="Published details"></i>
+                                            </div>
+
+                                            <div class="col-md-9 ">
+                                                @Html.EditorFor(model => model.UserFirstName, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.UserFirstName, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                        <br />
+
+                                        <div class="form-group">
+                                            <div class="col-md-3">
+                                                @Html.LabelFor(model => model.UserLastName, htmlAttributes: new { @class = "control-label" })
+                                                <i class="glyphicon glyphicon-question-sign color-blue" title="Published details"></i>
+                                            </div>
+
+                                            <div class="col-md-9 ">
+                                                @Html.EditorFor(model => model.UserLastName, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.UserLastName, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+
+                                        <div class="clearfix"></div>
+                                        <br />
+
+                                        @*<div class="form-group">
+                                            <div class="col-md-3">
+                                                @Html.LabelFor(model => model.Dob, htmlAttributes: new { @class = "control-label" })
+                                                <i class="glyphicon glyphicon-question-sign color-blue" title="Published details"></i>
+                                            </div>
+
+                                            <div class="col-md-9 ">
+                                                @Html.EditorFor(model => model.Dob, new { htmlAttributes = new { @class = "form-control", placeholder = "Employee Date Of Birth", @readonly = "true" } })
+
+                                                @* @Html.EditorFor(model => model.Dob, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.Dob, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>*@
+
+                                        <div class="clearfix"></div>
+                                        <br />
+
+                                        <div class="form-group">
+                                            <div class="col-md-3">
+                                                @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label" })
+                                                <i class="glyphicon glyphicon-question-sign color-blue" title="Published details"></i>
+                                            </div>
+
+                                            <div class="col-md-9 ">
+                                                @Html.TextAreaFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
+
+                                                @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+
+                                        <div class="clearfix"></div>
+                                        <br />
+
+                                        <div class="form-group">
+                                            <div class="col-md-3">
+                                                @Html.LabelFor(model => model.ZipPostalCode, htmlAttributes: new { @class = "control-label" })
+                                                <i class="glyphicon glyphicon-question-sign color-blue" title="Published details"></i>
+                                            </div>
+
+                                            <div class="col-md-9 ">
+                                                @Html.EditorFor(model => model.ZipPostalCode, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.ZipPostalCode, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+
+                                        <div class="clearfix"></div>
+                                        <br />
+
+                                        @*<div class="form-group">
+                                            <div class="col-md-3">
+                                                @Html.LabelFor(model => model.CreatedDate, htmlAttributes: new { @class = "control-label" })
+                                                <i class="glyphicon glyphicon-question-sign color-blue" title="Published details"></i>
+                                            </div>
+
+                                            <div class="col-md-9 ">
+                                                @Html.TextBox("txtFrmDate", DateTime.Now.ToString("dd-MMM-yyyy"), new { @Class = "textinput" })
+
+                                                @* @Html.EditorFor(model => model.Dob, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.CreatedDate, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>*@
+
+                                        <div class="clearfix"></div>
+                                        <br />
+
+
+                                        <div class="form-group">
+                                            <div class="col-md-offset-2 col-md-10">
+                                                <input type="submit" value="Save" class="btn btn-default" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    
+}
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jqueryui")
+    @Styles.Render("~/Content/cssjqryUi")
+
+    <script type="text/javascript">
+
+         $(document).ready(function () {
+             $('input[type=datetime]').datepicker({
+                 dateFormat: "dd/M/yy",
+                 changeMonth: true,
+                 changeYear: true,
+                 yearRange: "-60:+0"
+             });
+
+         });
+    </script>
+}

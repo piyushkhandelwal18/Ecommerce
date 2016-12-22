@@ -1,0 +1,91 @@
+﻿@model IEnumerable<CommonComponent.Models.Product>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="row">
+    <div class="col-md-9"><h3>Products</h3></div>
+    <div class="col-md-3" style="margin-top : 20px">
+
+        @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-success" })
+        @Html.ActionLink("Edit", "Edit", null, new { @class = "btn btn-success" })
+        @Html.ActionLink("Delete", "Delete", null, new { @class = "btn btn-success" })
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12" style="margin-top:20px">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <form class="form-horizontal" method="post" action="">
+                    <fieldset>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label"> Product Name:</label>
+
+                            <div class="col-md-9">
+
+                                <input type="text" id="txtName" placeholder="Product Name" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label"> Prize:</label>
+
+                            <div class="col-md-9">
+
+                                <input type="text" id="txtPrize" placeholder="Prize" class="form-control" />
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+    @using (Html.BeginForm())
+    {
+    <p>
+        Product Name:  @Html.TextBox("SearchString") <br />
+        <input type="submit" value="Filter" />
+    </p>
+    }
+</p>
+<table class="table ">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductPrize)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductImage)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductPrize)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductImage)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ProductId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ProductId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ProductId })
+        </td>
+    </tr>
+}
+
+</table>
